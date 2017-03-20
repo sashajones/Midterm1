@@ -11,6 +11,22 @@ public class Section {
 	private UUID SemesterID;
 	private UUID SectionID;
 	private int RoomID;
+	
+	
+	
+	/**
+	 * @param courseID
+	 * @param semesterID
+	 * @param sectionID
+	 * @param roomID
+	 */
+	public Section(UUID courseID, UUID semesterID, UUID sectionID, int roomID) {
+		super();
+		CourseID = courseID;
+		SemesterID = semesterID;
+		SectionID = sectionID;
+		RoomID = roomID;
+	}
 	/**
 	 * @return the courseID
 	 */

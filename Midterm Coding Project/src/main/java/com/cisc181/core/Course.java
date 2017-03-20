@@ -18,6 +18,17 @@ public class Course {
 	
 	
 	/**
+	 * @param courseID
+	 * @param courseName
+	 * @param gradePoints
+	 */
+	public Course(UUID courseID, String courseName, int gradePoints) {
+		super();
+		CourseID = courseID;
+		CourseName = courseName;
+		GradePoints = gradePoints;
+	}
+	/**
 	 * @return the courseID
 	 */
 	public UUID getCourseID() {

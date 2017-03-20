@@ -17,6 +17,7 @@ import java.util.Date;
 import com.cisc181.eNums.*;
 import java.util.*;
 import com.cisc181.eNums.eTitle;
+ 
 
 
 public class Staff_Test {
@@ -28,6 +29,8 @@ public class Staff_Test {
 
 	@BeforeClass
 	public static void setup() {
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
 	}
 	
 	@Test
