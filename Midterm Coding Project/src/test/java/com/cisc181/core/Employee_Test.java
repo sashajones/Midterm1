@@ -3,7 +3,7 @@
  */
 package com.cisc181.core;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.AfterClass;

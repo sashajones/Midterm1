@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 /*
  * comment
  */
@@ -64,6 +65,18 @@ public abstract class Person implements java.io.Serializable {
 		phone_number = newPhone_number;
 	
 	}
+	
+	public Person setPhoneNbr(String PhoneNbr) throws PersonException {
+
+		this.phone_number = PhoneNbr;
+		String regex = "^\\({1}([0-9]{3})\\){1}-{1}([0-9]{3})-{1}([0-9]{4})$";
+		boolean b = Pattern.matches(regex, PhoneNbr);
+		
+		if (!b) {
+			throw new PersonException(this, "Phone Number is bad");
+		} 
+		return this;
+	}
 
 	public String getPhone() {
 		return phone_number;
@@ -89,7 +102,7 @@ public abstract class Person implements java.io.Serializable {
 	 */
 
 	public Person(String FirstName, String MiddleName, String LastName,
-			Date DOB, String Address, String Phone_number, String Email)
+			Date DOB, String Address, String Phone_number, String Email) throws PersonException
 	{
 		this.FirstName = FirstName;
 		this.MiddleName = MiddleName;
@@ -141,4 +154,24 @@ public abstract class Person implements java.io.Serializable {
 		return age;
 
 	}
+	
+	
+	public void PersonDOB(Person person) throws PersonException {
+		Calendar currentDate = Calendar.getInstance();
+		currentDate.add(Calendar.YEAR, -100);
+
+		if (person.DOB.before(currentDate.getTime())) {
+			throw new PersonException(person, "Person is more than 100 years old.");
+		}
+
+		String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(person.phone_number);
+
+		if (!matcher.matches()) {
+			throw new PersonException(person, "invalid phone number");
+		}
+	}
+	
+	
 }
